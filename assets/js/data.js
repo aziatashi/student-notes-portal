@@ -1,3 +1,5 @@
+// Centralized Curriculum Database
+// Validated subject keys and standardized URL slugs
 const SITE_DATA = {
   "firstYear": {
     "odd": [
