@@ -1,0 +1,2 @@
+Placeholder notes file for First Year — Programming in C.
+Replace this file with the real material.

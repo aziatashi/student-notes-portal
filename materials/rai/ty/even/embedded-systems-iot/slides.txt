@@ -1,0 +1,2 @@
+Placeholder slides file for Robotics & Artificial Intelligence — Third Year — Even Semester — Embedded Systems & IoT.
+Replace this file with the real material.
