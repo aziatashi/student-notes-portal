@@ -1,0 +1,2 @@
+Placeholder notes file for Computer Science — Second Year — Even Semester — Theory of Automata with Compiler Design.
+Replace this file with the real material.
