@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Course Selection — Student Notes Portal</title>
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="page-app">
+  <div class="top-bar">
+    <a class="nav-back" href="login.html">&larr; Back</a>
+    <div class="nav-title">Course Selection</div>
+    <a class="nav-help" href="help.html">Help</a>
+  </div>
+
+  <div class="selector-wrap">
+    <div class="select-course-label">Select Course</div>
+
+    <div class="dropdowns">
+      <div class="dd" id="dd-year">
+        <button type="button" class="dd-trigger" data-dd="year">
+          <span class="dd-label">Year</span><span class="arrow">&#9660;</span>
+        </button>
+        <div class="dd-panel">
+          <div class="dd-option" data-value="fy">First Year</div>
+          <div class="dd-option" data-value="sy">Second Year</div>
+          <div class="dd-option" data-value="ty">Third Year</div>
+        </div>
+      </div>
+
+      <div class="dd d-none" id="dd-branch">
+        <button type="button" class="dd-trigger" data-dd="branch">
+          <span class="dd-label">Branch</span><span class="arrow">&#9660;</span>
+        </button>
+        <div class="dd-panel" id="branchOptions"></div>
+      </div>
+
+      <div class="dd" id="dd-sem">
+        <button type="button" class="dd-trigger" data-dd="sem">
+          <span class="dd-label">Sem</span><span class="arrow">&#9660;</span>
+        </button>
+        <div class="dd-panel">
+          <div class="dd-option" data-value="odd">Odd</div>
+          <div class="dd-option" data-value="even">Even</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subjects-heading">Subjects</div>
+    <div id="subjectsArea">
+      <div class="empty-state">Pick a year and semester to see subjects.</div>
+    </div>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/courses.js"></script>
+</body>
+</html>
