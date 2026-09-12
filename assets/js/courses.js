@@ -89,10 +89,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener("click", function () { closeAll(); });
 
-  
   function renderSubjects() {
-    const list = document.getElementById("subjectList");
-    if (!list) return;
-    list.innerHTML = '<p class="text-muted">Select branch and semester to view subjects.</p>';
+    subjectsArea.innerHTML = "";
+
+    const ready = state.year && state.sem && (state.year === "fy" || state.branch);
+    if (!ready) {
+      const hint = document.createElement("div");
+      hint.className = "empty-state";
+      hint.textContent = state.year === "fy"
+        ? "Pick a semester to see subjects."
+        : "Pick a year, branch and semester to see subjects.";
+      subjectsArea.appendChild(hint);
+      return;
+    }
+
+    let subjects = [];
+    if (state.year === "fy") {
+      subjects = (SITE_DATA.firstYear && SITE_DATA.firstYear[state.sem]) || [];
+    } else {
+      const branch = findBranch(state.branch);
+      const yearObj = branch && branch.years[state.year];
+      const semObj = yearObj && yearObj.semesters[state.sem];
+      subjects = (semObj && semObj.subjects) || [];
+    }
+
+    if (subjects.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "empty-state";
+      empty.textContent = "No subjects added for this semester yet.";
+      subjectsArea.appendChild(empty);
+      return;
+    }
+
+    const grid = document.createElement("div");
+    grid.className = "subject-grid";
+    subjects.forEach(function (subj) {
+      const params = new URLSearchParams();
+      if (state.year !== "fy") params.set("branch", state.branch);
+      params.set("year", state.year);
+      params.set("sem", state.sem);
+      params.set("subject", subj.id);
+
+      const a = document.createElement("a");
+      a.className = "subject-card";
+      a.href = "courses/subject.html?" + params.toString();
+      a.innerHTML =
+        '<span class="subject-card-name">' + subj.name + "</span>" +
+        '<span class="subject-card-count">' + subj.materials.length + " material" + (subj.materials.length === 1 ? "" : "s") + "</span>";
+      grid.appendChild(a);
+    });
+    subjectsArea.appendChild(grid);
   }
+
+  renderSubjects();
 });
