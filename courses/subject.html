@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subject Materials — Student Notes Portal</title>
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body class="page-app">
+  <div class="pill-navbar">
+    <a class="nav-back" href="../courses.html">&larr; Back</a>
+    <div class="nav-title">Study Materials</div>
+    <span class="nav-spacer" aria-hidden="true"></span>
+  </div>
+
+  <div class="subject-page-wrap">
+    <div class="subject-page-title" id="subjectTitle">Loading&hellip;</div>
+    <div class="subject-page-crumb" id="subjectCrumb"></div>
+
+    <div id="materialsList"></div>
+
+    <div class="not-found-box d-none" id="notFound">
+      Couldn't find that subject. <a href="../courses.html">Go back and pick again</a>.
+    </div>
+  </div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/subject-page.js"></script>
+</body>
+</html>
