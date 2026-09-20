@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login — Student Notes Portal</title>
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="page-admin-login">
+  <div class="sparkle tl" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="sparkle br" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <form class="admin-card" id="adminLoginForm">
+    <h1>Admin Login</h1>
+    <div class="admin-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required>
+    </div>
+    <div class="admin-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+    </div>
+    <div class="admin-error d-none" id="loginError">Incorrect username or password.</div>
+    <button type="submit" class="admin-login-btn">Log in</button>
+    <a href="login.html" class="admin-back-link">&larr; Back</a>
+  </form>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
