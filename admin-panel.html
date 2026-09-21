@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Panel — Student Notes Portal</title>
+  <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="page-app">
+  <div class="pill-navbar">
+    <a class="nav-back" href="login.html">Log out</a>
+    <div class="nav-title">Admin Panel</div>
+    <span class="nav-spacer" aria-hidden="true"></span>
+  </div>
+
+  <div class="admin-panel-wrap">
+
+    <div class="admin-panel-card">
+      <h2>Add a subject</h2>
+      <form id="addSubjectForm" class="row g-3">
+        <div class="col-md-3">
+          <label for="addYear" class="form-label">Year</label>
+          <select class="form-select" id="addYear" required>
+            <option value="fy">First Year</option>
+            <option value="sy">Second Year</option>
+            <option value="ty">Third Year</option>
+          </select>
+        </div>
+        <div class="col-md-3" id="addBranchWrap">
+          <label for="addBranch" class="form-label">Branch</label>
+          <select class="form-select" id="addBranch" required></select>
+        </div>
+        <div class="col-md-3">
+          <label for="addSem" class="form-label">Semester</label>
+          <select class="form-select" id="addSem" required>
+            <option value="odd">Odd</option>
+            <option value="even">Even</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="addSubjectName" class="form-label">Subject name</label>
+          <input type="text" class="form-control" id="addSubjectName" placeholder="e.g. Data Structures" required>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn-dark-pill">Add subject</button>
+        </div>
+        <div class="col-12">
+          <div class="admin-success d-none" id="addSuccess"></div>
+        </div>
+      </form>
+    </div>
+
+    <div class="admin-panel-card">
+      <h2>Overview</h2>
+      <p class="text-muted small" style="margin-top:-10px;">Click a row for a semester breakdown.</p>
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Branch</th>
+            <th>Total subjects</th>
+          </tr>
+        </thead>
+        <tbody id="summaryBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Detail modal -->
+  <div class="modal fade" id="branchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="branchModalTitle">Branch</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="branchModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
