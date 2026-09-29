@@ -1,6 +1,6 @@
 # Student Notes Portal
 
-> Working title — rename freely.
+for the students, by the students
 
 ## 1. What this is
 
