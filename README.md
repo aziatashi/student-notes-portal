@@ -1,84 +1,59 @@
+# Notes-Aid
 
+Notes-Aid is a study portal for engineering students. Pick your branch, year and semester to get module-wise notes, textbooks, previous year papers and embedded YouTube explanations for every subject. Progress on each video is saved locally in the browser.
 
-# **📚 Notes-Aid**  
-A **modern platform** to access academic notes with **embedded YouTube videos and PDFs** for better learning! 🚀  
+## Repository layout
 
-## **✨ Features**  
-✅ **Curated Study Materials** – Well-structured notes, textbooks and previous year questions for various subjects.  
-✅ **YouTube Video Integration** – Directly watch relevant tutorials.  
-✅ **PDF Resources** – Downloadable and easy-to-read notes.  
+| Path | What it is |
+| --- | --- |
+| `notes-aid/` | Main web app (Next.js 15, React 19, Tailwind 4 + daisyUI, PWA). Curriculum and links live in `src/notes/`. |
+| `notes-aid_v2/` | Next-gen app (MongoDB, Redis, NextAuth, Firebase): admin panel, edit links, leaderboard. Work in progress. It has no `package.json` yet, so it does not build. |
+| `notes-rag/` | Streamlit "chat with your PDF" prototype using Gemini + FAISS. |
 
----
+## Running the main app
 
-## **👥 Contributors**  
-We appreciate the contributions of our amazing team:  
+Requires Node.js 20+.
 
-<a href="https://github.com/MinavKaria/Notes-Aid/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=MinavKaria/Notes-Aid" />
-</a>
-
-🙌 Feel free to contribute and improve Notes-Aid!  
-
----
-
-## **📂 Project Structure**  
-```
-📂 notes-aid
-├── 📂 public
-│   ├── 📂 icons
-├── 📂 src
-│   ├── 📂 app
-│   │   ├── 📂 api/auth
-│   │   ├── 📂 [year]/[branch]/[semester]
-│   │   ├── 📂 edit
-│   │   │   ├── 📂 editor
-│   │   │   ├── 📂 login
-│   ├── 📂 components
-│   │   📂 interfaces
-│   │   📂 metrics
-│   │   📂 notes
-│   │   ├── 📂 fy, sy, ty
-│   │   │   ├── 📂 comps (evenSem, oddSem)
-│   │   │   ├── 📂 it (evenSem, oddSem)
-│   │   
-```
-
----
-
-## **🚀 Get Started**  
-1️⃣ Clone the repository:  
 ```bash
-git clone https://github.com/MinavKaria/Notes-Aid.git
 cd notes-aid
-```
-2️⃣ Install dependencies:  
-```bash
 npm install
+npm run dev        # http://localhost:3000
 ```
-3️⃣ Run the development server:  
+
+Production build:
+
 ```bash
-npm run dev
-```
-4️⃣ Open in browser:  
-```
-http://localhost:3000
+npm run build
+npm start
 ```
 
----
+`npm run lint` runs ESLint.
 
-## **📢 Contributing**  
-Want to improve **Notes-Aid**? Follow these steps:  
-1. Fork the repository  
-2. Create a feature branch  
-3. Make your changes & commit  
-4. Open a pull request  
+### Routes
 
-Your contributions are **always welcome!** 🎉  
+- `/` – branch / year / semester selector
+- `/[year]/[branch]/[semester]` – subjects and modules, e.g. `/sy/comps/odd`
+  - years: `fy`, `sy`, `ty`, `ly`
+  - branches: `comps`, `it`, `aids`, `csbs`, `cce`, `excp`, `extc`, `mech`, `rai`
+- `/contributors` – contributor list
 
----
+### Adding notes
 
-## 📄 License
+Subject data lives in `notes-aid/src/notes/<year>/<branch>/<oddSem|evenSem>/`. Each subject exports its modules, topics, video links and note PDFs, and `src/notes/data.tsx` wires them together. Previous year papers are in `src/notes/pyq.tsx`.
 
-This project is licensed under the [MIT License](LICENSE).
+## notes-rag
 
----
+```bash
+cd notes-rag
+pip install streamlit PyPDF2 langchain langchain-community langchain-google-genai google-generativeai faiss-cpu python-dotenv
+GEMINI_API_KEY=... streamlit run app.py
+```
+
+## Contributors
+
+- [@inikunjrathi](https://github.com/inikunjrathi)
+- [@aziatashi](https://github.com/aziatashi)
+
+## License
+
+MIT, see [LICENSE](LICENSE).
