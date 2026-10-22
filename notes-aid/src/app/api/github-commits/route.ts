@@ -15,7 +15,7 @@ interface GitHubCommit {
 export async function GET(_request: NextRequest) {
   try {
     // GitHub API endpoint for your repository
-    const repoUrl = "https://api.github.com/repos/MinavKaria/Notes-Aid/commits"
+    const repoUrl = "https://api.github.com/repos/aziatashi/student-notes-portal/commits"
 
     // Make the request to GitHub API
     const response = await fetch(repoUrl, {

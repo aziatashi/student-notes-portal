@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <span>Contribute on</span>
             <Link
-              href="https://github.com/MinavKaria/Notes-Aid"
+              href="https://github.com/aziatashi/student-notes-portal"
               target="_blank"
               className="hover:text-primary"
             >
@@ -29,27 +29,19 @@ const Footer = () => {
             <Rocket className="w-4 h-4  animate-bounce" />
             <span>Engineered by</span>
             <Link
-              href="https://github.com/MinavKaria"
+              href="https://github.com/inikunjrathi"
               target="_blank"
               className="underline hover:text-primary"
             >
-              Minav
-            </Link>
-            ,
-            <Link
-              href="https://github.com/veddsavla"
-              target="_blank"
-              className="underline hover:text-primary"
-            >
-              Vedansh
+              inikunjrathi
             </Link>
             &amp;
             <Link
-              href="https://github.com/yashankkothari"
+              href="https://github.com/aziatashi"
               target="_blank"
               className="underline hover:text-primary"
             >
-              Yashank
+              aziatashi
             </Link>
           </div>
         </div>

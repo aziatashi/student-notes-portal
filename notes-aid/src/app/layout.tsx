@@ -5,7 +5,6 @@ import Metrics from "../metrics";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
-import SessionProvider from "../components/SessionProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -52,20 +51,17 @@ export const metadata: Metadata = {
     "notes-aid webapp",
     "notes-aid notes",
     "notes-aid academic notes",
-    "minavkaria",
-    "vedanshsavla",
-    "aarushsaboo",
-    "minav"
+    "inikunjrathi",
+    "aziatashi"
   ],
   openGraph: {
     type: "website",
     title: "Notes-Aid",
     description: "A simple app to organize your academic notes",
     siteName: "Notes-Aid",
-    url: "https://notes-aid.minavkaria.tech",
     images: [
       {
-        url: "https://notes-aid.minavkaria.tech/icons/apple-touch-icon.png",
+        url: "/icons/apple-touch-icon.png",
         width: 1200,
         height: 630,
         alt: "Icon",
@@ -89,18 +85,8 @@ export const metadata: Metadata = {
     ],
   },
   authors: [
-    {
-      url: "minavkaria.xyz",
-      name: "Minav Karia",
-    },
-    {
-      url: "vedanshsavla.xyz",
-      name: "Vedansh Savla",
-    },
-    {
-      url: "aarushsaboo.xyz",
-      name: "Aarush Saboo",
-    },
+    { url: "https://github.com/inikunjrathi", name: "inikunjrathi" },
+    { url: "https://github.com/aziatashi", name: "aziatashi" },
   ],
 };
 
@@ -116,14 +102,12 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <SessionProvider>
           {/* <ThemeProvider attribute="class"> */}
             <Navbar />
             {children}
             <Metrics />
             <Footer />
           {/* </ThemeProvider> */}
-        </SessionProvider>
       </body>
     </html>
   );

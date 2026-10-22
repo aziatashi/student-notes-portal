@@ -21,7 +21,7 @@ export default function Contributors() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://api.github.com/repos/MinavKaria/Notes-Aid/contributors"
+          "https://api.github.com/repos/aziatashi/student-notes-portal/contributors"
         );
 
         if (!response.ok) {

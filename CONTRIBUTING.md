@@ -11,7 +11,7 @@ Step 0: Get a  _**temporary link and password**_ that are exclusively assigned t
 
 Example:
 
-_🔗 Link: https://notes-aid.minavkaria.in/edit/abcdefghijklmno_
+_🔗 Link: https://<your-deployment>/edit/abcdefghijklmno_
 
 _🔒 Password: ****_
 
