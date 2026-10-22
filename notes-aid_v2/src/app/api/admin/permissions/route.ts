@@ -8,7 +8,6 @@ export async function GET() {
   try {
     const session = await getServerSession(authOptions);
     
-    console.log("GET /api/admin/permissions - Full session:", JSON.stringify(session, null, 2));
     console.log("GET /api/admin/permissions - Session check:", {
       hasSession: !!session,
       hasUser: !!session?.user,
@@ -49,7 +48,6 @@ export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     
-    console.log("POST /api/admin/permissions - Full session:", JSON.stringify(session, null, 2));
     console.log("POST /api/admin/permissions - Session check:", {
       hasSession: !!session,
       hasUser: !!session?.user,

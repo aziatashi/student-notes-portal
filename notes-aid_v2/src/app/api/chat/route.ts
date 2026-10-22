@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/authOptions';
+
+const MAX_MESSAGES = 20;
+const MAX_MESSAGE_CHARS = 4000;
+const MAX_PDF_CONTEXT_CHARS = 200_000;
 
 const openai = new OpenAI({
     baseURL: 'https://go.fastrouter.ai/api/v1',
@@ -8,14 +14,26 @@ const openai = new OpenAI({
 
 export async function POST(request: NextRequest) {
     try {
-        const { messages, pdfContext } = await request.json();
+        // Paid LLM proxy: signed-in users only
+        const session = await getServerSession(authOptions);
+        if (!session?.user) {
+            return NextResponse.json({ error: 'Please sign in to use chat' }, { status: 401 });
+        }
 
-        if (!messages || !Array.isArray(messages)) {
+        const { messages: rawMessages, pdfContext: rawPdfContext } = await request.json();
+
+        if (!rawMessages || !Array.isArray(rawMessages) || rawMessages.length > MAX_MESSAGES) {
             return NextResponse.json(
                 { error: 'Invalid messages format' },
                 { status: 400 }
             );
         }
+
+        // Only user/assistant turns; clients must not inject system prompts
+        const messages = rawMessages
+            .filter((m) => (m?.role === 'user' || m?.role === 'assistant') && typeof m.content === 'string')
+            .map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content.slice(0, MAX_MESSAGE_CHARS) }));
+        const pdfContext = typeof rawPdfContext === 'string' ? rawPdfContext.slice(0, MAX_PDF_CONTEXT_CHARS) : '';
 
         // Prepare context with PDF content
         const systemMessage = pdfContext

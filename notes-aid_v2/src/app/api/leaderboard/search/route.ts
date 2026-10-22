@@ -44,11 +44,13 @@ export async function GET(request: NextRequest) {
     filter.admission_year = admissionYear;
 
     // Text search in name (fuzzy search)
-    const searchQuery = searchParams.get('q');
+    const searchQuery = searchParams.get('q')?.slice(0, 100);
     if (searchQuery) {
+      // Escape so user input is matched literally (no regex injection / ReDoS)
+      const pattern = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       filter.$or = [
-        { name: { $regex: searchQuery, $options: 'i' } },
-        { seat_number: { $regex: searchQuery, $options: 'i' } }
+        { name: { $regex: pattern, $options: 'i' } },
+        { seat_number: { $regex: pattern, $options: 'i' } }
       ];
     }
 
@@ -56,7 +58,7 @@ export async function GET(request: NextRequest) {
     if (searchParams.has('name')) {
       const nameValue = searchParams.get('name');
       if (nameValue) {
-        filter.name = { $regex: nameValue, $options: 'i' };
+        filter.name = { $regex: nameValue.slice(0, 100).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), $options: 'i' };
       }
     }
 
@@ -93,7 +95,7 @@ export async function GET(request: NextRequest) {
     if (searchParams.has('sort_by')) {
       const sortBy = searchParams.get('sort_by');
       const sortOrder = searchParams.get('sort_order') === 'asc' ? 1 : -1;
-      if (sortBy) {
+      if (sortBy && ['avg_cgpa', 'name', 'seat_number'].includes(sortBy)) {
         sort[sortBy] = sortOrder;
       }
     }
