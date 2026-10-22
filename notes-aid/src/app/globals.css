@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Gidole&display=swap')
+layer(base);
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes: all;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+
+
+.text-gray {
+  color: #C2C0B6;
+}
+
+body {
+  font-family: Helvetica;
+  color: var(--foreground);
+  background: var(--background);
+}
+h1,
+h2,
+h3 {
+  font-family: Helvetica;
+}
+code {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+/* this is a test */

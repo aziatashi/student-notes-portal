@@ -1,15 +1,3 @@
-# OS generated files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Editor and IDE directories
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Temporary logs
-*.log
-npm-debug.log*
-.build_meta
+package-lock.json
+node_modules
+package.json
