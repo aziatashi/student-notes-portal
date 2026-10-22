@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     "notes-aid webapp",
     "notes-aid notes",
     "notes-aid academic notes",
-    "minavkaria",
-     "yashankkothari",
-    "minav",
+    "inikunjrathi",
+     "aziatashi",
+    "nikunj",
       'kjsce',
     "kjsce notes",
     "kjsce notes app",
@@ -38,15 +38,17 @@ export const metadata: Metadata = {
     "kjsce notes web app",
     "kjsce notes webapp",
   ],
-  authors: [{ name: "Minav Karia", url: "https://minavkaria.in" }],
-  metadataBase: new URL("https://notes-aid.minavkaria.in"),
+  authors: [
+    { name: "inikunjrathi", url: "https://github.com/inikunjrathi" },
+    { name: "aziatashi", url: "https://github.com/aziatashi" },
+  ],
+  metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
 
   openGraph: {
     type: "website",
     title: "Notes-Aid",
     description: "A simple app to organize your academic notes",
     siteName: "Notes-Aid",
-    url: "https://notes-aid.minavkaria.in",
     images: [
       {
         url: "/favicon_io/android-chrome-512x512.png",

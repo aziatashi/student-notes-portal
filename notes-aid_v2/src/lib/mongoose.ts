@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI || "";
 
-if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
-}
-
 declare global {
   // cache connections per database name
   var __mongooseConnections: Record<string, mongoose.Connection> | undefined;
@@ -18,6 +14,9 @@ if (!global.__mongooseConnections) global.__mongooseConnections = {};
  * This caches one connection per database name (so you can connect to multiple DBs)
  */
 async function dbConnect(databaseName = ""): Promise<mongoose.Connection> {
+  if (!MONGODB_URI) {
+    throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
+  }
   const name = databaseName || "admin";
   const cache = global.__mongooseConnections as Record<string, mongoose.Connection>;
 

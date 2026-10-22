@@ -52,21 +52,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <span className="text-gray-400">Created by:</span>
                         <div className="flex items-center gap-3">
                             <a
-                                href="https://github.com/minavkaria"
+                                href="https://github.com/inikunjrathi"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-400 hover:text-blue-300 underline transition-colors font-semibold hover:scale-105 transform duration-200"
                             >
-                                Minav Karia
+                                Nikunj Rathi
                             </a>
                             <span className="text-gray-500">&</span>
                             <a
-                                href="https://github.com/yashankkothari"
+                                href="https://github.com/aziatashi"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-400 hover:text-blue-300 underline transition-colors font-semibold hover:scale-105 transform duration-200"
                             >
-                                Yashank Kothari
+                                aziatashi
                             </a>
                         </div>
                     </div>

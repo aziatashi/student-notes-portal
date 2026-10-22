@@ -202,7 +202,7 @@ export default function ManageAdminsPage() {
                       setFormData({ ...formData, githubUsername: e.target.value })
                     }
                     className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-gray-100 focus:outline-none focus:border-white focus:ring-1 focus:ring-white"
-                    placeholder="e.g., minavkaria"
+                    placeholder="e.g., inikunjrathi"
                     required
                   />
                 </div>
@@ -216,7 +216,7 @@ export default function ManageAdminsPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-gray-100 focus:outline-none focus:border-white focus:ring-1 focus:ring-white"
-                    placeholder="e.g., Minav Karia"
+                    placeholder="e.g., Nikunj Rathi"
                   />
                 </div>
 

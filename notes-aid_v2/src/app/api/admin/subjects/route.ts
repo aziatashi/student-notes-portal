@@ -8,7 +8,7 @@ const authOptions = {
   callbacks: {
     async jwt({ token, account, profile }: {token: unknown, account?: unknown, profile?: {login?: string}}) {
       if (account && profile) {
-        const adminGitHubUsernames = ['MinavKaria']
+        const adminGitHubUsernames = ['inikunjrathi','aziatashi']
         const typedToken = token as {isAdmin?: boolean, githubUsername?: string}
         typedToken.isAdmin = adminGitHubUsernames.includes(profile.login || '')
         typedToken.githubUsername = profile.login

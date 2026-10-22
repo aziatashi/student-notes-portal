@@ -4,7 +4,7 @@ import dbConnect from "@/lib/mongoose"
 import mongoose from "mongoose"
 import { cache } from "@/lib/cache"
 import { canEditSubject } from "@/lib/permissions"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/authOptions"
 
 async function checkSubjectEditPermission(subjectCollection: string) {
   try {

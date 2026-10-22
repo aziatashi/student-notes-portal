@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/lib/authOptions';
 import dbConnect from '@/lib/mongoose';
 import { getPendingChangeModel } from '@/lib/models/PendingChange';
 import { isSuperAdmin } from '@/lib/permissions';

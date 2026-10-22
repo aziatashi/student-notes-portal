@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dbConnect from "@/lib/mongoose";
 import { cache, CacheKeys, CacheTTL } from "@/lib/cache";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import { isSuperAdmin } from "@/lib/permissions";
 import { CurriculumFilter, CurriculumPostBody } from "@/types/api";
 

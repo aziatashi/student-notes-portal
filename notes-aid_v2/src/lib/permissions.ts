@@ -1,7 +1,7 @@
 import dbConnect from "./mongoose";
 import { getAdminPermissionModel, IAdminPermission } from "./models/AdminPermission";
 
-const SUPER_ADMIN_USERNAME = "MinavKaria";
+const SUPER_ADMIN_USERNAMES = ["inikunjrathi", "aziatashi"];
 
 /**
  * Check if a user is the super admin
@@ -9,7 +9,7 @@ const SUPER_ADMIN_USERNAME = "MinavKaria";
 export function isSuperAdmin(githubUsername?: string): boolean {
   if (!githubUsername) return false;
   // Case-insensitive comparison to handle any GitHub username casing
-  return githubUsername.toLowerCase() === SUPER_ADMIN_USERNAME.toLowerCase();
+  return SUPER_ADMIN_USERNAMES.includes(githubUsername.toLowerCase());
 }
 
 /**
@@ -169,8 +169,8 @@ export async function getAllAdmins(
   requesterUsername: string
 ): Promise<{ success: boolean; admins?: IAdminPermission[]; error?: string }> {
   console.log(`getAllAdmins: Checking if user "${requesterUsername}" is super admin`);
-  console.log(`getAllAdmins: SUPER_ADMIN_USERNAME = "${SUPER_ADMIN_USERNAME}"`);
-  console.log(`getAllAdmins: Case-insensitive comparison: "${requesterUsername?.toLowerCase()}" === "${SUPER_ADMIN_USERNAME.toLowerCase()}"`);
+  console.log(`getAllAdmins: SUPER_ADMIN_USERNAMES = "${SUPER_ADMIN_USERNAMES}"`);
+  console.log(`getAllAdmins: Case-insensitive comparison: "${requesterUsername?.toLowerCase()}" in "${SUPER_ADMIN_USERNAMES}"`);
   
   // Only super admin can view all admins
   if (!isSuperAdmin(requesterUsername)) {

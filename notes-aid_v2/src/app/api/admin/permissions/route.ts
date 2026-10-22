@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { getAllAdmins, setAdminPermissions, removeAdminPermissions } from "@/lib/permissions";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // GET - Get all admins (super admin only)
 export async function GET() {

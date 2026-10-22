@@ -113,18 +113,18 @@ const App = () => {
       // Fallback contributors
       setContributors([
         {
-          username: "minavkaria",
-          name: "Minav Karia",
-          avatar_url: "https://github.com/minavkaria.png",
+          username: "inikunjrathi",
+          name: "Nikunj Rathi",
+          avatar_url: "https://github.com/inikunjrathi.png",
           contributions: 150,
-          profile_url: "https://github.com/minavkaria",
+          profile_url: "https://github.com/inikunjrathi",
         },
         {
-          username: "yashankkothari",
-          name: "Yashank Kothari",
-          avatar_url: "https://github.com/yashankkothari.png",
+          username: "aziatashi",
+          name: "aziatashi",
+          avatar_url: "https://github.com/aziatashi.png",
           contributions: 120,
-          profile_url: "https://github.com/yashankkothari",
+          profile_url: "https://github.com/aziatashi",
         },
       ]);
     } finally {
@@ -475,21 +475,21 @@ const App = () => {
           </span>
           <span>
             <a
-              href="https://github.com/minavkaria"
+              href="https://github.com/inikunjrathi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-500 underline transition-colors font-semibold"
             >
-              Minav Karia
+              Nikunj Rathi
             </a>
             &nbsp;&amp;&nbsp;
             <a
-              href="https://github.com/yashankkothari"
+              href="https://github.com/aziatashi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-500 underline transition-colors font-semibold"
             >
-              Yashank Kothari
+              aziatashi
             </a>
           </span>
         </div>

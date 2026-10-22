@@ -80,7 +80,7 @@ const DocumentAI = () => {
     const [generatingQuiz, setGeneratingQuiz] = useState(false);
     
     const [showPdfContent, setShowPdfContent] = useState(false);
-    const [copiedMessage, setCopiedMessage] = useState(false);
+    const [, setCopiedMessage] = useState(false);
     const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null);
     
     const chatEndRef = useRef<HTMLDivElement>(null);
