@@ -52,7 +52,7 @@ def get_text_chunks(text):
 
 def get_vector_store(text_chunks):
     try:
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=st.session_state.GEMINI_API_KEY)
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001", google_api_key=st.session_state.GEMINI_API_KEY)
         vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
         
         if not os.path.exists("faiss_indexes"):
@@ -86,7 +86,7 @@ def get_conversational_chain():
     
     try:
         model = ChatGoogleGenerativeAI(
-            model="gemini-1.5-pro",
+            model="gemini-3.8-flash",
             google_api_key=st.session_state.GEMINI_API_KEY,
             temperature=0.3,
              max_tokens=None,
@@ -106,7 +106,7 @@ def get_conversational_chain():
 def process_user_question(user_question):
     try:
         embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001",
+            model="models/gemini-embedding-001",
             google_api_key=st.session_state.GEMINI_API_KEY
         )
         
