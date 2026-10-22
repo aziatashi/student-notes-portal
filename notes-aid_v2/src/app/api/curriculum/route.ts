@@ -4,7 +4,7 @@ import dbConnect from "@/lib/mongoose";
 import { cache, CacheKeys, CacheTTL } from "@/lib/cache";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { hasAdminAccess } from "@/lib/permissions";
+import { isSuperAdmin } from "@/lib/permissions";
 import { CurriculumFilter, CurriculumPostBody } from "@/types/api";
 
 /**
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.githubUsername) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    if (!(await hasAdminAccess(session.user.githubUsername))) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    if (!isSuperAdmin(session.user.githubUsername)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const body = (await request.json()) as CurriculumPostBody;
     if (!body?.year || typeof body?.branch !== "string" || !Array.isArray(body.subjects)) {
