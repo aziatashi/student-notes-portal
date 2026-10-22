@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import dbConnect from "@/lib/mongoose";
 import { ReviewRequestBody } from "@/types/api";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { canEditSubject } from "@/lib/permissions";
 
 /*
 Approve / Reject endpoint (POST)
@@ -21,10 +24,8 @@ Environment:
 
 export async function POST(request: NextRequest) {
   try {
-    const pathSegments = request.nextUrl.pathname.split("/").filter(Boolean);
-    const subjIndex = pathSegments.indexOf("subject");
-    const subjectName = subjIndex >= 0 ? pathSegments[subjIndex + 1] : null;
-    if (!subjectName) return NextResponse.json({ error: "Missing subject in path" }, { status: 400 });
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.githubUsername) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const id = request.nextUrl.searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Missing proposal id" }, { status: 400 });
@@ -42,12 +43,18 @@ export async function POST(request: NextRequest) {
     const proposal = await ProposalModel.findById(id).lean() as Record<string, unknown> | null;
     if (!proposal) return NextResponse.json({ error: "Proposal not found" }, { status: 404 });
 
+    // canEditSubject covers super admin and per-subject admins
+    const subjectName = String(proposal.subject || "");
+    if (!subjectName || !(await canEditSubject(session.user.githubUsername, subjectName))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
     if (proposal.status !== "pending") {
       return NextResponse.json({ error: "Proposal not pending" }, { status: 400 });
     }
 
     if (action === "reject") {
-      await ProposalModel.updateOne({ _id: id }, { $set: { status: "rejected", reviewer: body.reviewer || "admin", reviewNote: body.note || null, reviewedAt: new Date() } });
+      await ProposalModel.updateOne({ _id: id }, { $set: { status: "rejected", reviewer: session.user.githubUsername, reviewNote: body.note || null, reviewedAt: new Date() } });
       return NextResponse.json({ success: true, message: "Proposal rejected" });
     }
 
@@ -64,7 +71,7 @@ export async function POST(request: NextRequest) {
       await SubjectModel.findOneAndUpdate({}, { $set: proposal.changes as Record<string, unknown> }, { upsert: true });
     }
 
-    await ProposalModel.updateOne({ _id: id }, { $set: { status: "approved", reviewer: body.reviewer || "admin", reviewNote: body.note || null, reviewedAt: new Date() } });
+    await ProposalModel.updateOne({ _id: id }, { $set: { status: "approved", reviewer: session.user.githubUsername, reviewNote: body.note || null, reviewedAt: new Date() } });
 
     return NextResponse.json({ success: true, message: "Proposal approved and applied" });
   } catch (err: unknown) {

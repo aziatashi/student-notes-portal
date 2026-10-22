@@ -23,22 +23,7 @@ export async function GET() {
     }
     
     if (!session.user.githubUsername) {
-      console.log("GET /api/admin/permissions - No username in session, trying email");
-      // Fallback to email if githubUsername is not available
-      const username = (session.user.email?.split('@')[0] || session.user.name) as string | undefined;
-      if (!username) {
-        return NextResponse.json({ error: "Unauthorized - No identifier" }, { status: 401 });
-      }
-      console.log("GET /api/admin/permissions - Using fallback username:", username);
-      const result = await getAllAdmins(username);
-      
-      if (!result.success) {
-        console.log("GET /api/admin/permissions - Failed:", result.error);
-        return NextResponse.json({ error: result.error }, { status: 403 });
-      }
-      
-      console.log("GET /api/admin/permissions - Success");
-      return NextResponse.json({ admins: result.admins });
+      return NextResponse.json({ error: "Unauthorized - No identifier" }, { status: 401 });
     }
     
     const result = await getAllAdmins(session.user.githubUsername);
@@ -77,14 +62,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized - No session" }, { status: 401 });
     }
     
-    let username = session.user.githubUsername;
+    const username = session.user.githubUsername;
     if (!username) {
-      console.log("POST /api/admin/permissions - No username, trying fallback");
-      username = (session.user.email?.split('@')[0] || session.user.name) as string | undefined;
-      if (!username) {
-        return NextResponse.json({ error: "Unauthorized - No identifier" }, { status: 401 });
-      }
-      console.log("POST /api/admin/permissions - Using fallback username:", username);
+      return NextResponse.json({ error: "Unauthorized - No identifier" }, { status: 401 });
     }
     
     const body = await request.json();
@@ -137,12 +117,9 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized - No session" }, { status: 401 });
     }
     
-    let username = session.user.githubUsername;
+    const username = session.user.githubUsername;
     if (!username) {
-      username = (session.user.email?.split('@')[0] || session.user.name) as string | undefined;
-      if (!username) {
-        return NextResponse.json({ error: "Unauthorized - No identifier" }, { status: 401 });
-      }
+      return NextResponse.json({ error: "Unauthorized - No identifier" }, { status: 401 });
     }
     
     const { searchParams } = new URL(request.url);

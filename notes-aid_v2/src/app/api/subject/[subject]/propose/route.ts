@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import dbConnect from "@/lib/mongoose";
 import { ProposeRequestBody } from "@/types/api";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 /*
 Request (POST):
@@ -15,6 +17,9 @@ Notes:
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
     const pathSegments = request.nextUrl.pathname.split("/").filter(Boolean);
     const subjIndex = pathSegments.indexOf("subject");
     const subjectName = subjIndex >= 0 ? pathSegments[subjIndex + 1] : null;
@@ -42,7 +47,7 @@ export async function POST(request: NextRequest) {
     const ProposalModel = conn.models.proposal || conn.model("proposal", ProposalSchema, "proposals");
     const doc = await ProposalModel.create({
       subject: subjectName,
-      proposer: body.proposer || "anonymous",
+      proposer: session.user.githubUsername || session.user.email || "unknown",
       mode: body.mode || "merge",
       changes: body.changes,
     });

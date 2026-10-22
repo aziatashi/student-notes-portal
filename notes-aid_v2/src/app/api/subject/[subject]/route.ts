@@ -15,6 +15,10 @@ export async function GET(
   const { searchParams } = new URL(request.url);
   const moduleParam = searchParams.get('module');
 
+  if (moduleParam && !/^\d+$/.test(moduleParam)) {
+    return NextResponse.json({ error: 'Invalid module' }, { status: 400 });
+  }
+
   console.log("Subject:", subjectParam);
   
   // Try to get from cache first

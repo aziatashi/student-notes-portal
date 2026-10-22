@@ -15,7 +15,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const username = session.user.githubUsername || session.user.email?.split('@')[0] || session.user.name || '';
+  const username = session.user.githubUsername || '';
   
   if (!isSuperAdmin(username)) {
     return NextResponse.json({ error: 'Forbidden - Super admin only' }, { status: 403 });
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const username = session.user.githubUsername || session.user.email?.split('@')[0] || session.user.name || '';
+  const username = session.user.githubUsername || '';
   
   if (!isSuperAdmin(username)) {
     return NextResponse.json({ error: 'Forbidden - Super admin only' }, { status: 403 });
