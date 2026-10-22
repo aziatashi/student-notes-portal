@@ -116,14 +116,14 @@ const App = () => {
           username: "inikunjrathi",
           name: "Nikunj Rathi",
           avatar_url: "https://github.com/inikunjrathi.png",
-          contributions: 150,
+          contributions: 25,
           profile_url: "https://github.com/inikunjrathi",
         },
         {
           username: "aziatashi",
           name: "aziatashi",
           avatar_url: "https://github.com/aziatashi.png",
-          contributions: 120,
+          contributions: 20,
           profile_url: "https://github.com/aziatashi",
         },
       ]);
