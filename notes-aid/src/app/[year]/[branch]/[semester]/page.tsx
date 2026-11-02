@@ -124,7 +124,7 @@ const EngineeringCurriculum: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen dark:bg-gray-900">
+      <div className="flex items-center justify-center min-h-screen bg-base-100">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
     );
@@ -132,13 +132,13 @@ const EngineeringCurriculum: React.FC = () => {
 
   if (!subjects || Object.keys(subjects).length === 0 ) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-gray-900">
+      <div className="min-h-screen bg-base-100">
         <div className="w-full min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 md:p-6">
-          <div className="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-xs p-6 text-center">
-            <h2 className="text-lg md:text-2xl font-bold mb-4 text-black dark:text-base">
+          <div className="max-w-md mx-auto bg-base-200 rounded-lg shadow-xs p-6 text-center">
+            <h2 className="text-lg md:text-2xl font-bold mb-4 text-base-content">
               No Subjects Found
             </h2>
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-base-content/70">
               It seems there are no subjects available for the selected
               curriculum. Will be added soon
             </p>
@@ -295,7 +295,7 @@ const EngineeringCurriculum: React.FC = () => {
               <h2 className="text-base md:text-lg font-bold mb-1 text-base-content">
                 {subjects[selectedSubject].name} - Module {selectedModule || 1}
               </h2>
-              <p className=" text-red-500 mb-4">
+              <p className="text-error mb-4">
                 These videos only serve as explanations for the college notes,
                 so please refer to the notes to study.
               </p>
@@ -320,32 +320,32 @@ const EngineeringCurriculum: React.FC = () => {
       {/* Reset Confirmation Modal */}
       {showResetConfirmation && (
         <div className="fixed inset-0 bg-black/50  flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+          <div className="bg-base-100 rounded-lg p-6 max-w-sm w-full mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-bold text-black dark:text-base">
+              <h3 className="text-lg font-bold text-base-content">
                 Reset Progress
               </h3>
               <button
                 onClick={() => setShowResetConfirmation(false)}
-                className="text-gray-500 hover:text-gray-700 dark:text-base dark:hover:text-gray-200"
+                className="text-base-content/60 hover:text-base-content"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-base-content/70 mb-6">
               Are you sure you want to reset your progress for this subject?
               This action cannot be undone.
             </p>
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => setShowResetConfirmation(false)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-background dark:text-base dark:hover:bg-gray-600"
+                className="px-4 py-2 text-sm font-medium text-base-content bg-base-300 rounded-lg hover:bg-base-200"
               >
                 Cancel
               </button>
               <button
                 onClick={confirmReset}
-                className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600"
+                className="px-4 py-2 text-sm font-medium text-error-content bg-error rounded-lg hover:opacity-90"
               >
                 Reset
               </button>

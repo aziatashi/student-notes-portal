@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 
 const ThemeSwitcher = () => {
   const themes = [
+    "evergreen",
     "light",
     "dark",
     "cupcake",
@@ -38,15 +39,13 @@ const ThemeSwitcher = () => {
   ];
   
 
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState("evergreen");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setCurrentTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
-    } else {
-      document.documentElement.setAttribute("data-theme", "light");
     }
   }, []);
 

@@ -61,8 +61,8 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
         hover:shadow-2xl
         ${
           isActive
-            ? "border-blue-500 bg-base-100"
-            : "border-slate-200 bg-base-300"
+            ? "border-primary bg-base-100"
+            : "border-base-300 bg-base-300"
         }
       `}
       >

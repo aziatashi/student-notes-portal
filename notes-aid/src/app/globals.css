@@ -5,7 +5,44 @@ layer(base);
   themes: all;
 }
 
+@plugin "daisyui/theme" {
+  name: "evergreen";
+  color-scheme: light;
+  --color-base-100: #F4F1EA;
+  --color-base-200: #EAE6DB;
+  --color-base-300: #DDD8CA;
+  --color-base-content: #2A2D2F;
+  --color-primary: #2E5A44;
+  --color-primary-content: #F4F1EA;
+  --color-secondary: #2A2D2F;
+  --color-secondary-content: #F4F1EA;
+  --color-accent: #9BC17A;
+  --color-accent-content: #153126;
+  --color-neutral: #153126;
+  --color-neutral-content: #F4F1EA;
+  --color-info: #2F6F7E;
+  --color-info-content: #F4F1EA;
+  --color-success: #2E5A44;
+  --color-success-content: #F4F1EA;
+  --color-warning: #D9A441;
+  --color-warning-content: #153126;
+  --color-error: #A63D2F;
+  --color-error-content: #F4F1EA;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
 @custom-variant dark (&:is(.dark *));
+
+[data-theme="forest"] {
+  --color-base-100: #0F0F10;
+}
 
 
 

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 // import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Metrics from "../metrics";
-import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 
@@ -98,6 +97,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="evergreen"
       suppressHydrationWarning
       className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable}`}
     >
@@ -106,7 +106,6 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Metrics />
-            <Footer />
           {/* </ThemeProvider> */}
       </body>
     </html>

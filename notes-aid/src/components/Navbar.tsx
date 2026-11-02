@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { NotebookPen, Bell, X, Download } from "lucide-react";
+import { Bell, X, Download } from "lucide-react";
 import ThemeSwitcher from "./ThemeChanger";
 
 interface Notification {
@@ -297,12 +297,8 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <NotebookPen className="w-6 h-6 text-base-content " />
               <h1 className="text-xl font-bold text-base-content ">
                 Notes-Aid
-                <sup className="text-xs font-normal text-base-content  mx-2">
-                  Beta
-                </sup>
               </h1>
             </div>
           </Link>
