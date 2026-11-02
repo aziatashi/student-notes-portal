@@ -9,7 +9,6 @@ Notes-Aid is a Next.js web app that lets engineering students browse notes and l
 | Curriculum content | Static TypeScript files in `src/notes/` (109 files) |
 | Student progress | Browser `localStorage` |
 | External services | GitHub REST API, YouTube embeds, Google Drive links |
-| Install support | `next-pwa` service worker and web manifest |
 | Analytics | Google Analytics, Microsoft Clarity |
 
 ```mermaid
@@ -39,7 +38,6 @@ Routing uses the Next.js App Router, so each `page.tsx` or `route.ts` under `src
 | `/contributors` | `src/app/contributors/page.tsx` | Contributor cards; no longer linked from the UI |
 | `/api/github-commits` | `src/app/api/github-commits/route.ts` | Commits used for notifications |
 | `/api/github-contributors` | `src/app/api/github-contributors/route.ts` | Contributor list |
-| `/manifest.json` | `src/app/manifest.json` | PWA manifest |
 
 Valid URL values:
 
@@ -133,7 +131,6 @@ The local `.env` also has values such as `MONGODB_URI`, `REDIS_URL` and the Fire
 | `toggleVideo` | `src/components/VideoAccordion.tsx` | Stops the playing video and opens or closes a row |
 | `fetchNotifications` | `src/components/Navbar.tsx` | Loads commits, keeps those starting with `notify:` and counts unread ones |
 | `markAllAsRead` | `src/components/Navbar.tsx` | Records the read time and clears the badge |
-| `handleInstallClick` | `src/components/Navbar.tsx` | Shows the PWA install prompt, or instructions on iOS |
 
 Any commit whose message starts with `notify:` appears as a site notification, as long as it is among the 30 most recent commits.
 
@@ -158,7 +155,7 @@ RootLayout
 
 | Component | Role |
 | --- | --- |
-| `Navbar` | Home link, notifications and install button |
+| `Navbar` | Home link and notifications |
 | `ModuleCard` | Shows a module's topic count and video progress |
 | `TopicList` | Shows study materials and expandable topics |
 | `VideoAccordion` | Keeps one video open at a time |
@@ -166,9 +163,7 @@ RootLayout
 | `ProgressBar` | Draws completion as a percentage bar |
 | `Metrics` | Loads Google Analytics and Microsoft Clarity |
 
-**Theming:** the default theme is Evergreen, defined in `src/app/globals.css` and set on `<html>` in `layout.tsx`. A theme saved in the browser overrides it. Components should use theme colours such as `bg-base-100` and `text-primary` so they work in every theme.
-
-**PWA:** `next-pwa` generates `public/service-worker.js` during production builds and is disabled in development. Its scope is set to `/app` in `next.config.ts`, and no such route exists, so it may not control any pages. This hasn't been tested.
+**Theming:** Evergreen is the only theme, defined in `src/app/globals.css` and set on `<html>` in `layout.tsx`. Components should use theme colours such as `bg-base-100` and `text-primary`.
 
 ## Adding content
 

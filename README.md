@@ -6,7 +6,7 @@ Notes-Aid is a study portal for engineering students. Pick your branch, year and
 
 | Path | What it is |
 | --- | --- |
-| `notes-aid/` | Main web app (Next.js 15, React 19, Tailwind 4 + daisyUI, PWA). Curriculum and links live in `src/notes/`. |
+| `notes-aid/` | Main web app (Next.js 15, React 19, Tailwind 4 + daisyUI). Curriculum and links live in `src/notes/`. |
 | `notes-aid_v2/` | Next-gen app (MongoDB, Redis, NextAuth, Firebase): admin panel, edit links, leaderboard. Needs external services, see below. |
 | `notes-rag/` | Streamlit "chat with your PDF" prototype using Gemini + FAISS. |
 
