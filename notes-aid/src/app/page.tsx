@@ -75,14 +75,7 @@ export default function MainPage() {
       //   `Selected Branch: ${selectedBranch}, Selected Year: ${selectedYear}, Semester: ${selectedSemester}`
       // );
 
-      if (
-        selectedYear === "fy" &&
-        !(selectedBranch === "comps" || selectedBranch === "aids")
-      ) {
-        if (selectedSemester === "odd") router.push(`/fy/comps/even`);
-        else router.push(`/fy/comps/odd`);
-      } else
-        router.push(`/${selectedYear}/${selectedBranch}/${selectedSemester}`);
+      router.push(`/${selectedYear}/${selectedBranch}/${selectedSemester}`);
     }
   };
 

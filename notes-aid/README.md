@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment
+
+`GITHUB_TOKEN` (optional): raises the GitHub API limit used by the notifications and contributors pages from 60 to 5,000 requests an hour. A token with no scopes is enough, and it is only read on the server.
+
 ## Getting Started
 
 First, run the development server:

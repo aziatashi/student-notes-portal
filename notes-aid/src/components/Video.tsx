@@ -94,7 +94,7 @@ function Video({
                 }}
                 width="100%"
                 height="100%"
-                src={`${video.url}?enablejsapi=1`}
+                src={`${video.url}${video.url.includes("?") ? "&" : "?"}enablejsapi=1`}
                 title={video.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

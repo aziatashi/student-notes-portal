@@ -82,7 +82,7 @@ const ed = {
           videos: [
             {
               title: "Introductions to Orthogonal Projections",
-              url: "https://www.youtube.com/embed/bVy-_iqLo1k?si=nkYYTdNKoqLDuvcR&amp;controls=0",
+              url: "https://www.youtube.com/embed/bVy-_iqLo1k?si=nkYYTdNKoqLDuvcR&controls=0",
             }
           ]
         },

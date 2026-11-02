@@ -11,6 +11,8 @@ import subjects_excp_sy_oddSem from "./sy/excp/oddSem/subject";
 import subjects_excp_sy_evenSem from "./sy/excp/evenSem/subject";
 import subjects_extc_sy_oddSem from "./sy/extc/oddSem/subject";
 import subjects_extc_sy_evenSem from "./sy/extc/evenSem/subject";
+import subjects_rai_sy_oddSem from "./sy/rai/oddSem/subject";
+import subjects_rai_sy_evenSem from "./sy/rai/evenSem/subject";
 
 import subjects_comps_ty_even from "./ty/comps/evenSem/subject";
 import subjects_comps_ty_odd from "./ty/comps/oddSem/subject";
@@ -21,14 +23,34 @@ import subjects_it_ty_even from "./ty/it/evenSem/subject";
 import subjects_excp_ty_even from "./ty/excp/evenSem/subject";
 // import subjects_excp_ty_odd from "./ty/excp/oddSem/subject";
 
+// First year is common to all branches, but only comps and aids take the
+// subjects in this order; every other branch has the two semesters swapped.
+const fyCompsGroup = {
+  odd: subjects_comps_fy_odd,
+  even: subjects_comps_fy_evenSem,
+};
+const fyOtherGroup = {
+  odd: subjects_comps_fy_evenSem,
+  even: subjects_comps_fy_odd,
+};
+
 const NotesData = {
   fy: {
-    comps: {
-      odd: subjects_comps_fy_odd,
-      even: subjects_comps_fy_evenSem,
-    },
+    comps: fyCompsGroup,
+    aids: fyCompsGroup,
+    mech: fyOtherGroup,
+    excp: fyOtherGroup,
+    it: fyOtherGroup,
+    extc: fyOtherGroup,
+    rai: fyOtherGroup,
+    cce: fyOtherGroup,
+    csbs: fyOtherGroup,
   },
   sy: {
+    rai: {
+      odd: subjects_rai_sy_oddSem,
+      even: subjects_rai_sy_evenSem,
+    },
     comps: {
       odd: subjects_comps_sy_oddSem,
       even: subjects_comps_sy_evenSem,

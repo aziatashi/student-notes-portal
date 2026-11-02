@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { fetchFromRepo } from "@/lib/github"
 
 // Define a type for GitHub commit data
 interface GitHubCommit {
@@ -14,23 +15,7 @@ interface GitHubCommit {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function GET(_request: NextRequest) {
   try {
-    // GitHub API endpoint for your repository
-    const repoUrl = "https://api.github.com/repos/aziatashi/student-notes-portal/commits"
-
-    // Make the request to GitHub API
-    const response = await fetch(repoUrl, {
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-        // Optional: Add your GitHub token for higher rate limits
-        // "Authorization": `token ${process.env.GITHUB_TOKEN}`,
-      },
-    })
-
-    if (!response.ok) {
-      throw new Error(`GitHub API responded with status: ${response.status}`)
-    }
-
-    const commits = (await response.json()) as GitHubCommit[]
+    const commits = await fetchFromRepo<GitHubCommit[]>("commits")
 
     // Process the commits to the format your frontend expects
     const notifications = commits.map((commit: GitHubCommit) => ({

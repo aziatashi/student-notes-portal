@@ -145,7 +145,7 @@ const dsip = {
           videos: [
             {
               title: "Video 1 (Matrix Method for Circular Convolution)",
-              url: "https://www.youtube.com/embed/TrgfP7QD3Nk?si=i1wauBtCp5ioeTOm&amp;start=258",
+              url: "https://www.youtube.com/embed/TrgfP7QD3Nk?si=i1wauBtCp5ioeTOm&start=258",
             },
             {
               title: "Video 2 (Graph Method)",
@@ -404,7 +404,7 @@ const dsip = {
             },
             {
               title: "Introduction to Wavelet Transform (from 6:02)",
-              url: "https://www.youtube.com/embed/s02VrcLObvU?si=iF8Z4v_v0OEeFbhI&amp;start=362",
+              url: "https://www.youtube.com/embed/s02VrcLObvU?si=iF8Z4v_v0OEeFbhI&start=362",
             },
           ],
         },

@@ -20,9 +20,7 @@ export default function Contributors() {
     const fetchContributors = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "https://api.github.com/repos/aziatashi/student-notes-portal/contributors"
-        );
+        const response = await fetch("/api/github-contributors");
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);

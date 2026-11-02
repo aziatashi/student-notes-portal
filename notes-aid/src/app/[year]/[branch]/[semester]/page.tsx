@@ -244,18 +244,15 @@ const EngineeringCurriculum: React.FC = () => {
                 {Object.keys(pyq).length > 0 &&
                   pyq.map((pyq, index) => {
                     return (
-                      <>
-                        <div key={index} > 
+                      <div key={index}>
                         <a
                           href={pyq.url}
                           target="_blank"
                           className="btn inline-block px-4 py-2 mt-2 text-sm font-medium bg-neutral text-neutral-content btn-soft btn-neutral border-1 border-primary"
-                          key={index}
                         >
                           {pyq.title}
-                            </a>
-                          </div>
-                      </>
+                        </a>
+                      </div>
                     )
                   })}
               </div>
