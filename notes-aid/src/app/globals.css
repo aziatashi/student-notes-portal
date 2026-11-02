@@ -2,7 +2,7 @@
 layer(base);
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: all;
+  themes: false;
 }
 
 @plugin "daisyui/theme" {
@@ -39,12 +39,6 @@ layer(base);
 }
 
 @custom-variant dark (&:is(.dark *));
-
-[data-theme="forest"] {
-  --color-base-100: #0F0F10;
-}
-
-
 
 .text-gray {
   color: #C2C0B6;

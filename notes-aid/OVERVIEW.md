@@ -134,19 +134,17 @@ The local `.env` also has values such as `MONGODB_URI`, `REDIS_URL` and the Fire
 | `fetchNotifications` | `src/components/Navbar.tsx` | Loads commits, keeps those starting with `notify:` and counts unread ones |
 | `markAllAsRead` | `src/components/Navbar.tsx` | Records the read time and clears the badge |
 | `handleInstallClick` | `src/components/Navbar.tsx` | Shows the PWA install prompt, or instructions on iOS |
-| `changeTheme` | `src/components/ThemeChanger.tsx` | Applies a theme and saves it |
 
 Any commit whose message starts with `notify:` appears as a site notification, as long as it is among the 30 most recent commits.
 
 ## Main frontend
 
-All pages share `src/app/layout.tsx`, which sets the default theme and renders the navbar, the page and the analytics scripts. The curriculum page is the core of the UI:
+All pages share `src/app/layout.tsx`, which sets the theme and renders the navbar, the page and the analytics scripts. The curriculum page is the core of the UI:
 
 ```text
 RootLayout
 ├── Navbar
-│   ├── Notifications dropdown
-│   └── ThemeChanger
+│   └── Notifications dropdown
 ├── EngineeringCurriculum (curriculum page)
 │   ├── Subject cards
 │   ├── Important links and ModuleCard list
@@ -160,8 +158,7 @@ RootLayout
 
 | Component | Role |
 | --- | --- |
-| `Navbar` | Home link, notifications, install button and theme picker |
-| `ThemeChanger` | Lists 33 daisyUI themes and restores the saved choice |
+| `Navbar` | Home link, notifications and install button |
 | `ModuleCard` | Shows a module's topic count and video progress |
 | `TopicList` | Shows study materials and expandable topics |
 | `VideoAccordion` | Keeps one video open at a time |

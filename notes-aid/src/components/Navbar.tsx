@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Bell, X, Download } from "lucide-react";
-import ThemeSwitcher from "./ThemeChanger";
 
 interface Notification {
   id: string;
@@ -409,7 +408,6 @@ const Navbar = () => {
             )}
           </div>
           <button className="hidden" onClick={handleBestCalc}>Click this for the Best Calculator ever!!!</button>
-          <ThemeSwitcher/>
         </div>
       </div>
     </nav>

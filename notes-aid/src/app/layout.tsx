@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-// import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Metrics from "../metrics";
 import Navbar from "../components/Navbar";
@@ -102,11 +101,9 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-          {/* <ThemeProvider attribute="class"> */}
-            <Navbar />
-            {children}
-            <Metrics />
-          {/* </ThemeProvider> */}
+        <Navbar />
+        {children}
+        <Metrics />
       </body>
     </html>
   );
